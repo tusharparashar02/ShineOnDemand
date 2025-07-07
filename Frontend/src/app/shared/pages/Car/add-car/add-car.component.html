@@ -1,0 +1,41 @@
+<div class="p-6 max-w-lg mx-auto bg-white rounded-xl shadow-lg border border-gray-200">
+    <h2 class="text-2xl font-bold text-blue-600 mb-6 text-center">🚘 Add a Car</h2>
+
+    <form (ngSubmit)="addCar()" class="space-y-4">
+        <input type="text" [(ngModel)]="car.userId" name="userId" placeholder="User ID" class="input-field" required>
+        <input type="text" [(ngModel)]="car.model" name="model" placeholder="Car Model" class="input-field" required>
+        <input type="text" [(ngModel)]="car.carNumber" name="carNumber" placeholder="Car Number" class="input-field"
+            required>
+        <input type="number" [(ngModel)]="car.year" name="year" placeholder="Year" class="input-field" required>
+
+        <div class="flex items-center gap-2">
+            <input type="checkbox" [(ngModel)]="car.isActive" name="isActive" class="w-5 h-5">
+            <label for="isActive" class="text-gray-700 text-lg">Active</label>
+        </div>
+
+        <button class="btn w-full">➕ Add Car</button>
+    </form>
+
+    <!-- Display All Cars -->
+    <h2 class="text-2xl font-bold text-gray-800 mt-6 text-center">📝 All Added Cars</h2>
+    
+    <ul class="mt-6 space-y-4">
+        <li *ngFor="let car of cars"
+            class="border p-4 rounded-lg bg-white shadow-md flex items-center gap-4 transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    
+            <!-- Car Image -->
+            <img src="https://www.shutterstock.com/image-vector/carpool-icon-car-sharing-road-600nw-1917075533.jpg" alt="{{ car.model }}" class="w-20 h-20 rounded-lg shadow-md">
+    
+            <!-- Car Details -->
+            <div class="flex-grow">
+                <strong class="text-lg text-blue-700 block">{{ car.model }}</strong>
+                <p class="text-gray-600">{{ car.carNumber }} - {{ car.year }}</p>
+            </div>
+    
+            <!-- Delete Button -->
+            <button class="delete-btn transform transition hover:rotate-12" (click)="deleteCar(car.carNumber)">❌
+                Remove</button>
+        </li>
+    </ul>
+ 
+</div>

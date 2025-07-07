@@ -1,0 +1,47 @@
+<nav class="shadow-lg sticky top-0 z-50"
+  style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwJWj1c0DUleHnZhphm7MHPgpcO2w2cYoQ_A&s'); background-size: cover; background-position: center;">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <a class="text-2xl font-bold text-grey-700 " routerLink="/">OnDemand-CarWash</a>
+
+    <div class="space-x-6 flex items-center">
+      <!-- Home Button -->
+      <a routerLink="/"
+        class="font-medium px-4 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 transition duration-300">
+        🏠 Home
+      </a>
+    
+      <!-- My Dashboard Button -->
+      <button (click)="navigateToDashboard()"
+        class="font-medium px-4 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 transition duration-300">
+        📊 My Dashboard
+      </button>
+    
+      <!-- Dropdown with Click Toggle -->
+      <div class="relative">
+        <button (click)="toggleDropdown()"
+          class="font-medium px-4 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 transition duration-300 flex items-center">
+          Account
+          <svg class="inline w-4 h-4 ml-1 transform transition-transform duration-300" [class.rotate-180]="showDropdown"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+    
+        <!-- Dropdown menu -->
+        <div *ngIf="showDropdown"
+          class="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg py-2 z-50 opacity-0 scale-95 transition-all duration-300"
+          [class.opacity-100]="showDropdown" [class.scale-100]="showDropdown">
+          <ng-container *ngIf="!isLoggedIn">
+            <a routerLink="/login" class="block px-4 py-2 bg-gray-100 hover:bg-gray-200 transition duration-200">Login</a>
+            <a routerLink="/register"
+              class="block px-4 py-2 bg-gray-100 hover:bg-gray-200 transition duration-200">Register</a>
+          </ng-container>
+          <ng-container *ngIf="isLoggedIn">
+            <button (click)="logout()"
+              class="block px-4 py-2 bg-gray-100 hover:bg-gray-200 transition duration-200">Logout</button>
+          </ng-container>
+        </div>
+      </div>
+      </div>
+  </div>
+</nav>

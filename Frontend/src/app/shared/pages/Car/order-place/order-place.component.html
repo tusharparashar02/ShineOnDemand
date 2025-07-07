@@ -1,0 +1,58 @@
+<div class="max-w-lg mx-auto bg-white shadow-lg border border-gray-300 rounded-xl p-6">
+    <h2 class="text-2xl font-bold text-blue-600 mb-6 text-center">📦 Place an Order</h2>
+
+    <form (ngSubmit)="placeOrder()" class="space-y-4">
+        <input type="text" [(ngModel)]="order.userId" name="userId" placeholder="User ID" class="input-field" required>
+        <input type="text" [(ngModel)]="order.carNumber" name="carNumber" placeholder="Car Number" class="input-field"
+            required>
+        <input type="number" [(ngModel)]="order.packageId" name="packageId" placeholder="Package ID" class="input-field"
+
+            required>
+        <input type="text" [(ngModel)]="order.address" name="address" placeholder="Delivery Address" class="input-field"
+                required>
+        <input type="date" [(ngModel)]="order.scheduledDate" name="scheduledDate" class="input-field" required>
+        
+        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            📌 Add-ons <span class="ml-2 text-sm text-gray-500">(Customize your order)</span>
+        </h3>
+
+        <div *ngFor="let addOn of order.orderAddOns; let i = index"
+            class="flex flex-col md:flex-row items-center gap-4 p-4 bg-gray-100 rounded-lg shadow-md">
+            <div class="flex-grow space-y-2">
+                <input type="number" [(ngModel)]="addOn.addOnId" name="addOnId{{i}}" placeholder="Add-On ID"
+                    class="input-field w-full text-center">
+                <input type="text" [(ngModel)]="addOn.addOnName" name="addOnName{{i}}" placeholder="Add-On Name"
+                    class="input-field w-full text-center">
+                <input type="number" [(ngModel)]="addOn.addOnPrice" name="addOnPrice{{i}}" placeholder="Add-On Price"
+                    class="input-field w-full text-center">
+            </div>
+            <button type="button"
+                class="btn bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition duration-300"
+                (click)="removeAddOn(i)">❌ Remove</button>
+        </div>
+
+        <div class="flex justify-center mt-4">
+            <button type="button"
+                class="btn bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-lg shadow-md transition duration-300"
+                (click)="addNewAddOn()">➕ Add Another Add-On</button>
+        </div>
+
+        <button type="submit"
+            class="btn w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold shadow-md transition duration-300">🚀
+            Place Order</button>
+    </form>
+
+    <h2 class="text-xl font-bold text-gray-800 mt-6 text-center">📜 All Orders</h2>
+    <ul class="mt-4">
+        <li *ngFor="let order of orders"
+            class="border p-4 rounded-lg bg-gray-50 shadow-md flex justify-between items-center">
+            <div>
+                <strong class="text-lg text-blue-700">Order #{{ order.id }}</strong>
+                <p class="text-gray-600">Car: {{ order.carNumber }}</p>
+                <p class="text-gray-600">Scheduled: {{ order.scheduledDate }}</p>
+            </div>
+            <button class="delete-btn transform transition hover:rotate-12"
+                (click)="deleteOrder(order.id, order.scheduledDate)">❌ Cancel</button>
+        </li>
+    </ul>
+    </div>

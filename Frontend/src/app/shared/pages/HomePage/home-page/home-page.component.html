@@ -1,0 +1,71 @@
+<section class="bg-gray-100 text-gray-800 min-h-screen">
+  <div class="bg-gradient-to-r from-blue-50 via-white to-blue-50 py-20 relative overflow-hidden"
+    style="background-image: url('https://img.freepik.com/free-vector/wave-background-abstract-gradient-design_483537-3688.jpg'); background-size: cover; background-position: center;">
+  
+    <!-- Moving Car Animation -->
+    <div class="absolute bottom-10 left-[-150px] animate-driveCar">
+      <img src="https://img.icons8.com/color/100/car.png" alt="Car" class="w-32 h-20">
+    </div>
+  
+    <!-- Animated Floating Shapes -->
+    <div class="absolute inset-0 flex justify-center">
+      <div class="animate-bounce w-24 h-24 bg-pink-500 rounded-full opacity-50 blur-md"></div>
+      <div class="animate-spin w-16 h-16 bg-blue-400 rounded-full opacity-40 blur-sm mx-10"></div>
+    </div>
+  
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <!-- Title with Fade-In Animation -->
+      <h1 class="text-4xl md:text-5xl font-extrabold text-yellow-900 mb-6 drop-shadow-sm opacity-100 animate-fadeIn">
+        Welcome to <span class="text-blue-500">OnDemand-CarWash</span>
+      </h1>
+  
+      <!-- Subtitle with Slide-Up Effect -->
+      <p class="text-lg md:text-xl text-blue-600 mb-10 max-w-2xl mx-auto opacity-100 animate-slideUp">
+        Book eco-friendly, on-demand car washes at your doorstep — quick, convenient, and professional.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="bg-gradient-to-r from-blue-50 via-white to-blue-50 py-20 relative overflow-hidden"
+    style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwJWj1c0DUleHnZhphm7MHPgpcO2w2cYoQ_A&s'); background-size: cover; background-position: center;">
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Title with Fade-In & Glow Effect
+      <h2 class="text-4xl font-bold text-center text-pink-700 mb-12 opacity-0 animate-fadeIn shadow-lg glow-effect">
+        Why Choose Us?
+      </h2> -->
+  
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+  
+        <!-- Feature 1 -->
+        <div
+          class="bg-green-500 rounded-2xl shadow-xl p-6 flex flex-col items-center text-center transform hover:scale-105 transition duration-500">
+          <img src="https://t4.ftcdn.net/jpg/05/27/31/85/360_F_527318575_KiFwNsX9m8m0B7ccjniMoxMYwXlYy7n3.jpg"
+            alt="Eco Products" class="mb-4 w-20 h-20 animate-bounce" />
+          <h3 class="text-2xl font-semibold mb-2 text-blue-600">Eco-Friendly Products</h3>
+          <p class="text-grey-700">We use biodegradable and non-toxic products for all washes.</p>
+        </div>
+  
+        <!-- Feature 2 -->
+        <div
+          class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center text-center transform hover:scale-105 transition duration-500">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhohRyElx2WRYv-pELB1X81pPGOKEQENMaew&s"
+            alt="Flexible Schedule" class="mb-4 w-20 h-20 animate-spin-slow" />
+          <a routerLink="/login" class="text-2xl font-semibold mb-2 text-blue-600" (click)="navigateToLogin()">Flexible Scheduling</a>
+          <p class="text-gray-900">Choose your preferred time and location with just a few clicks.</p>
+        </div>
+  
+        <!-- Feature 3 -->
+        <div
+          class="bg-gradient-to-r from-purple-500 via-blue-400 to-cyan-500 rounded-2xl shadow-xl p-6 flex flex-col items-center text-center transform hover:scale-105 transition duration-500">
+          <img src="https://img.icons8.com/color/96/price-tag.png" alt="Affordable"
+            class="mb-4 w-20 h-20 animate-pulse" />
+          <h3 class="text-2xl font-semibold mb-2 text-blue-600">Affordable Packages</h3>
+          <p class="text-gray-900">Get the best car wash service at competitive prices.</p>
+        </div>
+  
+      </div>
+    </div>
+    </div>
+
+</section>

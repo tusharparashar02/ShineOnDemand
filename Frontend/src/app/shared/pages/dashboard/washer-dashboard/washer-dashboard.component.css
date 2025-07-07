@@ -1,0 +1,30 @@
+/* Table Hover Effect */
+table tbody tr:hover {
+    background-color: #f0fdf4;
+    /* Light green */
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Button Hover Effects */
+button {
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Fade-in Effect for Order Details */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    } }

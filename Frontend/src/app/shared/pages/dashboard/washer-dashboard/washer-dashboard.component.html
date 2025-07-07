@@ -1,0 +1,85 @@
+<div class="p-6 bg-gray-100 min-h-screen flex flex-col items-center">
+    <h2 class="text-2xl font-bold bg-gradient-to-r from-green-500 to-blue-500 text-white p-3 rounded-lg shadow-md">
+        Washer Dashboard
+    </h2>
+
+    <!-- Orders List -->
+    <div class="mt-6 w-full max-w-4xl bg-white p-5 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-gray-700">Assigned Orders</h3>
+        <table class="w-full border border-gray-300 mt-4 rounded-lg shadow-sm">
+            <thead>
+                <tr class="bg-green-100 text-gray-700">
+                    <th class="p-3">ID</th>
+                    <th class="p-3">User</th>
+                    <th class="p-3">Status</th>
+                    <th class="p-3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders" class="border-t hover:bg-green-50 transition-all">
+                    <td class="p-3 text-center">{{ order.id }}</td>
+                    <td class="p-3 text-center">{{ order.user?.name || 'N/A' }}</td>
+                    <td class="p-3 text-center">
+                        <span class="px-2 py-1 rounded-full text-white text-sm font-semibold"
+                            [ngClass]="order.status === 'ACCEPTED' ? 'bg-green-500' : 'bg-red-500'">
+                            {{ order.status }}
+                        </span>
+                    </td>
+                    <td class="p-3 text-center">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:scale-105 transition shadow-md"
+                            (click)="selectOrder(order)">View</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Order Details & Update Status -->
+    <div *ngIf="selectedOrder" class="mt-6 w-full max-w-4xl bg-white p-5 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-gray-700">Order Details</h3>
+        <p class="text-gray-600"><strong>ID:</strong> {{ selectedOrder.id }}</p>
+        <p class="text-gray-600"><strong>User:</strong> {{ selectedOrder.user?.name }}</p>
+        <p class="text-gray-600"><strong>Status:</strong> {{ selectedOrder.status }}</p>
+
+        <!-- Update Order Status -->
+        <h3 class="text-lg font-semibold mt-3 text-gray-700">Update Status</h3>
+        <select class="border p-3 rounded-lg focus:ring-2 focus:ring-green-300 transition shadow-md w-full mt-2"
+            [(ngModel)]="status">
+            <option value="ACCEPTED">Accept</option>
+            <option value="DECLINED">Decline</option>
+            <option value="COMPLETED">Completed</option>
+        </select>
+        <textarea class="border p-3 rounded-lg focus:ring-2 focus:ring-green-300 transition shadow-md w-full mt-2"
+            [(ngModel)]="comment" placeholder="Add a comment..."></textarea>
+        <button class="bg-green-500 text-white px-5 py-2 rounded-lg hover:scale-105 transition mt-3 shadow-md"
+            (click)="updateOrderStatus()">Update</button>
+    </div>
+    <div class="p-6 bg-gray-100 min-h-screen flex flex-col items-center">
+        <h2 class="text-2xl font-bold bg-gradient-to-r from-green-500 to-blue-500 text-white p-3 rounded-lg shadow-md">
+            Your Ratings
+        </h2>
+    
+        <!-- Washer Ratings -->
+        <div class="mt-6 w-full max-w-4xl bg-white p-5 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold text-gray-700">Your Ratings</h3>
+            <table class="w-full border border-gray-300 mt-4 rounded-lg shadow-sm">
+                <thead>
+                    <tr class="bg-green-100 text-gray-700">
+                        <th class="p-3">Order ID</th>
+                        <th class="p-3">User ID</th>
+                        <th class="p-3">Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rating of ratings" class="border-t hover:bg-green-50 transition-all">
+                        <td class="p-3 text-center">{{ rating.orderId }}</td>
+                        <td class="p-3 text-center">{{ rating.userId }}</td>
+                        <td class="p-3 text-center">
+                            ⭐ {{ rating.ratingValue }} / 5
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>

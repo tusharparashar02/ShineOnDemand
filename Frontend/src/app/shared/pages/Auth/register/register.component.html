@@ -1,0 +1,56 @@
+<section class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Create Account</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Name Field -->
+      <div class="mb-4">
+        <label class="block text-gray-700">Name</label>
+        <input type="text" formControlName="name"
+          class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Tushar" />
+        <p class="text-red-500 text-sm mt-1" *ngIf="name?.invalid && name?.touched">
+          Name is required and must be at least 3 characters.
+        </p>
+      </div>
+
+      <!-- Email Field -->
+      <div class="mb-4">
+        <label class="block text-gray-700">Email</label>
+        <input type="email" formControlName="email"
+          class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Parashar@Car.com" />
+        <p class="text-red-500 text-sm mt-1" *ngIf="email?.invalid && email?.touched">
+          Enter a valid email address.
+        </p>
+      </div>
+
+      <!-- Password Field -->
+      <div class="mb-6">
+        <label class="block text-gray-700">Password</label>
+        <input type="password" formControlName="password"
+          class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="********" />
+        <p class="text-red-500 text-sm mt-1" *ngIf="password?.invalid && password?.touched">
+          Password must be at least 6 characters.
+        </p>
+      </div>
+
+      <!-- Role Field -->
+      <div class="mb-6">
+        <label class="block text-gray-700">Role</label>
+        <input type="text" formControlName="role"
+          class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Customer/Washer" />
+        <p class="text-red-500 text-sm mt-1" *ngIf="role?.invalid && role?.touched">
+          Role is required.
+        </p>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full bg-pink-600 text-white py-2 rounded-md hover:bg-green-700"
+        [disabled]="registerForm.invalid">
+        Register
+      </button>
+    </form>
+  </div>
+</section>
